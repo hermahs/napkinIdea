@@ -10,11 +10,6 @@ public class Hand implements Tool {
 	public Hand(GraphicsContext gc) {
 		this.gc = gc;
 	}
-	
-	@Override
-	public void draw() {
-		// TODO implement panning functionality here
-	}
 
 	@Override
 	public void setSize(float s) {
@@ -41,6 +36,24 @@ public class Hand implements Tool {
 	@Override
 	public Color getColor() {
 		return null;
+	}
+
+	@Override
+	public void startDraw(double x, double y) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void dragDraw(double x, double y) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void endDraw(double x, double y) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
