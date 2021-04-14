@@ -4,18 +4,18 @@ Programmet skal være et tegneprogram som simulerer at du er på en bar og skal 
 
 TODO:
 
-- [] Fikse fxml til applikasjonen
+- [ ] Fikse fxml til applikasjonen
     * [x] Lage fxml til selve tegneprogrammet 
-    * [] Lage fxml til når du åpner programmet
-    * [] Fikse fxml til lagring og åpning av filer gjennom topbar
-- [] Tools greier
-    * [] zoom for alle
-    * [] hand tool
+    * [ ] Lage fxml til når du åpner programmet
+    * [ ] Fikse fxml til lagring og åpning av filer gjennom topbar
+- [ ] Tools greier
+    * [ ] zoom for alle
+    * [ ] hand tool
     * [x] Pencil tool
-    * [] Rectangle tool
-    * [] Ellipse tool
-    * [] Eraser tool
-- [] layers greier
-    * [] lage layer class
-    * [] fikse undo redo med layers som lagrer hvert "trekk"/malinggreie
-    * [] legge til layers i fxml'en
+    * [ ] Rectangle tool
+    * [ ] Ellipse tool
+    * [ ] Eraser tool
+- [ ] layers greier
+    * [ ] lage layer class
+    * [ ] fikse undo redo med layers som lagrer hvert "trekk"/malinggreie
+    * [ ] legge til layers i fxml'en
