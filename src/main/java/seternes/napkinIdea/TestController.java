@@ -11,10 +11,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.ToolBar;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.input.ScrollEvent;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import seternes.napkinIdea.PannableCanvas.PannableCanvas;
+import seternes.napkinIdea.PannableCanvas.SceneGestures;
 
 public class TestController implements Initializable {
     // fxml data
@@ -22,33 +29,38 @@ public class TestController implements Initializable {
     @FXML private ColorPicker colorPicker;
     @FXML private Slider sizeSlider;
     @FXML private Label sizeLabel;
-    @FXML private Slider opacitySlider;
-    @FXML private Label opacityLabel;
-    @FXML private ToolBar layerContainer;
+    @FXML private Pane canvasContainer;
+    @FXML private Button handButton;
+    @FXML private Button pencilButton;
+    @FXML private Button boxButton;
+    @FXML private Button circleButton;
+    @FXML private Button eraserButton;
+    @FXML private Button undoButton;
+    @FXML private Button redoButton;
 
     // other data
     private GraphicsContext gc;
-    private ToolController tc;
+    private ToolController tc; // TODO lage alle "tools" som en tegne app trenger
+
+    // TODO add panning and zooming to canvas
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+
         this.gc = this.canvas.getGraphicsContext2D();
-        this.tc = new ToolController(this.gc);
+        this.tc = new ToolController(this.gc, canvasContainer);
+
+        // initialize canvas
+        gc.setFill(Color.WHITE);
+        gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
         // drawing
-        canvas.setOnMousePressed(e->{
-            this.tc.startDraw(e.getX(), e.getY());
-        });
+        canvas.addEventFilter(MouseEvent.MOUSE_PRESSED, this.tc.getOnMousePressedEventHandler());
+        canvas.addEventFilter(MouseEvent.MOUSE_DRAGGED, this.tc.getOnMouseDraggedEventHandler());
+        canvas.addEventFilter(MouseEvent.MOUSE_RELEASED, this.tc.getOnMouseReleasedEventHandler());
+        canvas.addEventFilter(ScrollEvent.ANY, this.tc.getOnScrollEventHandler());
+        
 
-        canvas.setOnMouseDragged(e->{
-            this.tc.dragDraw(e.getX(), e.getY());
-        });
-
-        canvas.setOnMouseReleased(e->{
-            this.tc.endDraw(e.getX(), e.getY());
-        });
-
-        // color picker
         this.colorPicker.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
@@ -68,7 +80,4 @@ public class TestController implements Initializable {
         // opacity slider
 
     }
-
-    
-
 }

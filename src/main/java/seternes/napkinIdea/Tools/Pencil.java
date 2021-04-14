@@ -1,6 +1,8 @@
 package seternes.napkinIdea.Tools;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.input.ScrollEvent;
 import javafx.scene.paint.Color;
 
 public class Pencil implements Tool {
@@ -55,23 +57,31 @@ public class Pencil implements Tool {
 	}
 
 	@Override
-	public void startDraw(double x, double y) {
+	public void handleOnMousePressedEvent(MouseEvent event) {
 		this.gc.setStroke(this.color);
 		this.gc.beginPath();
-		this.gc.lineTo(x,y);
+		this.gc.lineTo(event.getX(),event.getY());
+		event.consume();
 	}
 
 	@Override
-	public void dragDraw(double x, double y) {
-		this.gc.lineTo(x, y);
+	public void handleOnMouseDraggedEvent(MouseEvent event) {
+		this.gc.lineTo(event.getX(),event.getY());
 		this.gc.stroke();
+		event.consume();
 	}
 
 	@Override
-	public void endDraw(double x, double y) {
-		this.gc.lineTo(x, y);
+	public void handleOnMouseReleasedEvent(MouseEvent event) {
+		this.gc.lineTo(event.getX(), event.getY());
 		this.gc.stroke();
 		this.gc.closePath();
+		event.consume();
+	}
+
+	@Override
+	public void handleOnScrollEvent(ScrollEvent event) {
+		event.consume();
 	}
 
 }

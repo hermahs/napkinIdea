@@ -46,57 +46,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="663.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seternes.napkinIdea.TestController">
    <children>
-      <MenuBar layoutY="10.0" maxWidth="1.7976931348623157E308" prefHeight="27.0" prefWidth="650.0">
-         <menus>
-            <Menu mnemonicParsing="false" text="File">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="New" />
-                  <MenuItem mnemonicParsing="false" text="Open…" />
-                  <Menu mnemonicParsing="false" text="Open Recent" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Close" />
-                  <MenuItem mnemonicParsing="false" text="Save" />
-                  <MenuItem mnemonicParsing="false" text="Save As…" />
-                  <MenuItem mnemonicParsing="false" text="Revert" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Preferences…" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Quit" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Edit">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Undo" />
-                  <MenuItem mnemonicParsing="false" text="Redo" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Cut" />
-                  <MenuItem mnemonicParsing="false" text="Copy" />
-                  <MenuItem mnemonicParsing="false" text="Paste" />
-                  <MenuItem mnemonicParsing="false" text="Delete" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Select All" />
-                  <MenuItem mnemonicParsing="false" text="Unselect All" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Help">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
-               </items>
-            </Menu>
-         </menus>
-      </MenuBar>
-      <ToolBar layoutY="36.0" orientation="VERTICAL" prefHeight="288.0" prefWidth="39.0">
-         <items>
-            <Button contentDisplay="CENTER" mnemonicParsing="false" text="D" />
-            <Button alignment="CENTER" mnemonicParsing="false" text="D" />
-            <Button alignment="CENTER" mnemonicParsing="false" text="D" />
-            <Button alignment="CENTER" mnemonicParsing="false" text="D" />
-            <Button alignment="CENTER" mnemonicParsing="false" text="D" />
-            <Button alignment="CENTER" mnemonicParsing="false" text="D" />
-         </items>
-      </ToolBar>
       <ToolBar layoutX="493.0" layoutY="36.0" orientation="VERTICAL" prefHeight="183.0" prefWidth="147.0">
          <items>
             <ColorPicker id="colorPicker" fx:id="colorPicker" prefWidth="145.0" />
@@ -114,31 +65,8 @@
             </Group>
          </items>
       </ToolBar>
-      <Canvas id="canvas" fx:id="canvas" height="381.0" layoutX="49.0" layoutY="10.0" width="449.0" />
-      <ToolBar layoutY="320.0" orientation="VERTICAL" prefHeight="71.0" prefWidth="39.0">
-         <items>
-            <Button mnemonicParsing="false" prefWidth="28.0" text="U" />
-            <Button mnemonicParsing="false" text="R" />
-         </items>
-      </ToolBar>
       <ToolBar id="layerContainer" fx:id="layerContainer" layoutX="493.0" layoutY="219.0" orientation="VERTICAL" prefHeight="173.0" prefWidth="157.0">
-         <items>
-            <Group>
-               <children>
-                  <Label prefHeight="16.0" prefWidth="147.0" text="Layer 1" />
-               </children>
-            </Group>
-            <Group>
-               <children>
-                  <Label prefHeight="16.0" prefWidth="147.0" text="Layer 1" />
-               </children>
-            </Group>
-            <Group>
-               <children>
-                  <Label prefHeight="16.0" prefWidth="147.0" text="Layer 1" />
-               </children>
-            </Group>
-         </items>
       </ToolBar>
+      <Group fx:id="canvasContainer"></Group>
    </children>
 </AnchorPane>

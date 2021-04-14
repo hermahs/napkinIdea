@@ -1,14 +1,18 @@
 package seternes.napkinIdea.Tools;
 
-import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.input.ScrollEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import seternes.napkinIdea.PannableCanvas.DragContext;
 
 public class Hand implements Tool {
 
-	private GraphicsContext gc;
-	
-	public Hand(GraphicsContext gc) {
-		this.gc = gc;
+	private Pane canvasContainer;
+	private DragContext dragContext;
+
+	public Hand(Pane canvasContainer) {
+		this.canvasContainer = canvasContainer;
 	}
 
 	@Override
@@ -39,21 +43,28 @@ public class Hand implements Tool {
 	}
 
 	@Override
-	public void startDraw(double x, double y) {
+	public void handleOnMousePressedEvent(MouseEvent event) {
 		// TODO Auto-generated method stub
-		
+		event.consume();
 	}
 
 	@Override
-	public void dragDraw(double x, double y) {
+	public void handleOnMouseDraggedEvent(MouseEvent event) {
 		// TODO Auto-generated method stub
-		
+		event.consume();
 	}
 
 	@Override
-	public void endDraw(double x, double y) {
+	public void handleOnMouseReleasedEvent(MouseEvent event) {
 		// TODO Auto-generated method stub
-		
+		event.consume();
 	}
+
+	@Override
+	public void handleOnScrollEvent(ScrollEvent event) {
+		// TODO Auto-generated method stub
+		event.consume();
+	}
+
 
 }
