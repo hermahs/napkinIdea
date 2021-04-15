@@ -4,6 +4,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import seternes.napkinIdea.Layer;
 import seternes.napkinIdea.PannableCanvas.DragContext;
 
 public class Hand implements Tool {
@@ -16,31 +17,16 @@ public class Hand implements Tool {
 	}
 
 	@Override
-	public void setSize(float s) {
-	}
+	public void setSize(float s) {}
 
 	@Override
-	public void setOpacity(float o) {
-	}
+	public void setColor(Color c) {}
 
 	@Override
-	public void setColor(Color c) {
-	}
+	public float getSize() {return 0;}
 
 	@Override
-	public float getSize() {
-		return 0;
-	}
-
-	@Override
-	public float getOpacity() {
-		return 0;
-	}
-
-	@Override
-	public Color getColor() {
-		return null;
-	}
+	public Color getColor() {return null;}
 
 	@Override
 	public void handleOnMousePressedEvent(MouseEvent event) {
@@ -61,10 +47,7 @@ public class Hand implements Tool {
 	}
 
 	@Override
-	public void handleOnScrollEvent(ScrollEvent event) {
-		// TODO Auto-generated method stub
-		event.consume();
+	public void reDraw(Layer l) {
+		return;	
 	}
-
-
 }

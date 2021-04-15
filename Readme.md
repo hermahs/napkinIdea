@@ -12,10 +12,16 @@ TODO:
     * [ ] zoom for alle
     * [ ] hand tool
     * [x] Pencil tool
-    * [ ] Rectangle tool
-    * [ ] Ellipse tool
-    * [ ] Eraser tool
-- [ ] layers greier
-    * [ ] lage layer class
-    * [ ] fikse undo redo med layers som lagrer hvert "trekk"/malinggreie
-    * [ ] legge til layers i fxml'en
+    * [x] Rectangle tool
+    * [x] Ellipse tool
+    * [x] Eraser tool
+- [x] layers greier
+    * [x] lage layer class
+    * [x] fikse undo redo med layers som lagrer hvert "trekk"/malinggreie
+- [ ] Lagring
+    * [ ] designe filtype
+    * [ ] åpning av egen filtype
+    * [ ] exportering til png/jpg
+    * [ ] lagring til egen fil
+- [ ] generelle ting
+    * [ ] fikse Exceptions til alt som trenger det

@@ -4,17 +4,17 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.paint.Color;
+import javafx.util.Pair;
+import seternes.napkinIdea.Layer;
 
 public class Pencil implements Tool {
 
 	private float size;
-	private float opacity;
 	private Color color;
 	private GraphicsContext gc;
 	
-	public Pencil(float s, float o, Color c, GraphicsContext gc) {
+	public Pencil(float s, Color c, GraphicsContext gc) {
 		this.size = s;
-		this.opacity = o;
 		this.color = c;
 		this.gc = gc;
 	}
@@ -29,21 +29,8 @@ public class Pencil implements Tool {
 	}
 
 	@Override
-	public void setOpacity(float o) throws IllegalArgumentException {
-		if(o < 0) throw new IllegalArgumentException("Opacity can not be negative");
-		else if(o > 1) throw new IllegalArgumentException("Opacity can not be greater than 1");
-		
-		this.opacity = o;
-	}
-
-	@Override
 	public float getSize() {
 		return this.size;
-	}
-
-	@Override
-	public float getOpacity() {
-		return this.opacity;
 	}
 
 	@Override
@@ -80,8 +67,15 @@ public class Pencil implements Tool {
 	}
 
 	@Override
-	public void handleOnScrollEvent(ScrollEvent event) {
-		event.consume();
+	public void reDraw(Layer l) {
+		this.gc.moveTo(l.getData().get(0).getKey(), l.getData().get(0).getValue());
+		this.gc.setLineWidth(l.getSize());
+		this.gc.setStroke(l.getColor());
+		this.gc.beginPath();
+		for(Pair<Double, Double> p : l.getData()) {
+			this.gc.lineTo(p.getKey(), p.getValue());
+			this.gc.stroke();
+		}
+		this.gc.closePath();
 	}
-
 }
