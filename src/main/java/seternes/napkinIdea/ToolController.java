@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import javafx.event.EventHandler;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.util.Pair;
 import seternes.napkinIdea.Tools.*;
@@ -18,7 +17,7 @@ public class ToolController {
 	//history data to send to historyController
 	private ArrayList<Pair<Double, Double>> xyData = new ArrayList<Pair<Double, Double>>();
 	
-	public ToolController(GraphicsContext gc, Pane canvasContainer) {
+	public ToolController(GraphicsContext gc, CanvasContainer canvasContainer) {
 		this.gc = gc;
 		this.tool = ToolList.PENCIL;
 		
@@ -135,4 +134,9 @@ public class ToolController {
 			tools[tool.getValue()].handleOnMouseReleasedEvent(event);
 		}
 	};
+
+	@Override
+	public String toString() {
+		return String.format("ToolController. Tools:%s", this.tools.toString());
+	}
 }

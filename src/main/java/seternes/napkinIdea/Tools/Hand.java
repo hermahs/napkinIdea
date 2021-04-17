@@ -1,18 +1,22 @@
 package seternes.napkinIdea.Tools;
 
+import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.input.ScrollEvent;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import seternes.napkinIdea.CanvasContainer;
 import seternes.napkinIdea.Layer;
-import seternes.napkinIdea.PannableCanvas.DragContext;
 
 public class Hand implements Tool {
 
-	private Pane canvasContainer;
-	private DragContext dragContext;
+	private CanvasContainer canvasContainer;
 
-	public Hand(Pane canvasContainer) {
+	private double mouseX;
+	private double mouseY;
+
+	private double translateAnchorX;
+	private double translateAnchorY;
+
+	public Hand(CanvasContainer canvasContainer) {
 		this.canvasContainer = canvasContainer;
 	}
 
@@ -30,19 +34,32 @@ public class Hand implements Tool {
 
 	@Override
 	public void handleOnMousePressedEvent(MouseEvent event) {
-		// TODO Auto-generated method stub
+
+		if(!event.isPrimaryButtonDown()) return;
+
+		this.mouseX = event.getSceneX();
+		this.mouseY = event.getSceneY();
+
+		Node node = (Node) event.getSource();
+
+		this.translateAnchorX = node.getTranslateX();
+		this.translateAnchorY = node.getTranslateY();
 		event.consume();
 	}
 
 	@Override
 	public void handleOnMouseDraggedEvent(MouseEvent event) {
-		// TODO Auto-generated method stub
+
+		if(!event.isPrimaryButtonDown()) return;
+
+		this.canvasContainer.getChildren().get(0).setTranslateX(this.translateAnchorX + event.getSceneX() - this.mouseX);
+		this.canvasContainer.getChildren().get(0).setTranslateY(this.translateAnchorY + event.getSceneY() - this.mouseY);
+
 		event.consume();
 	}
 
 	@Override
 	public void handleOnMouseReleasedEvent(MouseEvent event) {
-		// TODO Auto-generated method stub
 		event.consume();
 	}
 

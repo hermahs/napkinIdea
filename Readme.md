@@ -8,9 +8,9 @@ TODO:
     * [x] Lage fxml til selve tegneprogrammet 
     * [ ] Lage fxml til når du åpner programmet
     * [ ] Fikse fxml til lagring og åpning av filer gjennom topbar
-- [ ] Tools greier
-    * [ ] zoom for alle
-    * [ ] hand tool
+- [x] Tools greier
+    * [x] zoom for alle
+    * [x] hand tool
     * [x] Pencil tool
     * [x] Rectangle tool
     * [x] Ellipse tool
@@ -25,3 +25,17 @@ TODO:
     * [ ] lagring til egen fil
 - [ ] generelle ting
     * [ ] fikse Exceptions til alt som trenger det
+- [ ] test dekning til alle funksjoner og klasser
+    * [ ] ToolController
+    * [ ] Layer
+    * [ ] HistoryController
+    * [ ] CanvasConatiner
+    * [ ] CanvasConatinerController
+    * [ ] Alle tools
+        * [ ] Ellipse
+        * [ ] Eraser
+        * [ ] Hand
+        * [ ] Pencil
+        * [ ] Rectangle
+        * [ ] Tool
+        * [ ] ToolList

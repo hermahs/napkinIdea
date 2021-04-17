@@ -9,15 +9,13 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.input.ScrollEvent;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import seternes.napkinIdea.Tools.ToolList;
 
@@ -27,9 +25,10 @@ public class TestController implements Initializable {
     @FXML private ColorPicker colorPicker;
     @FXML private Slider sizeSlider;
     @FXML private Label sizeLabel;
-    @FXML private Pane canvasContainer;
+    @FXML private CanvasContainer canvasContainer;
+    @FXML private Node root;
     // tool buttons
-    @FXML private Button handButton;
+    @FXML private Button moveButton;
     @FXML private Button pencilButton;
     @FXML private Button boxButton;
     @FXML private Button circleButton;
@@ -39,26 +38,20 @@ public class TestController implements Initializable {
 
     // other data
     private GraphicsContext gc;
-    private ToolController tc; // TODO lage alle "tools" som en tegne app trenger
-
-    // TODO add panning and zooming to canvas
+    private ToolController tc;
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
 
         this.gc = this.canvas.getGraphicsContext2D();
         this.tc = new ToolController(this.gc, canvasContainer);
+        this.canvasContainer.init(this.canvas, this.tc);
+
+        this.root.setStyle("-fx-background-color: grey;");
 
         // initialize canvas
-        gc.setFill(Color.WHITE);
-        gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
-
-        // drawing
-        canvas.addEventFilter(MouseEvent.MOUSE_PRESSED, this.tc.getOnMousePressedEventHandler());
-        canvas.addEventFilter(MouseEvent.MOUSE_DRAGGED, this.tc.getOnMouseDraggedEventHandler());
-        canvas.addEventFilter(MouseEvent.MOUSE_RELEASED, this.tc.getOnMouseReleasedEventHandler());
-        
-        
+        this.gc.setFill(Color.WHITE);
+        this.gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
         this.colorPicker.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -124,6 +117,14 @@ public class TestController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 tc.changeTool(ToolList.ERASER);
+                event.consume();
+            }
+        });
+
+        this.moveButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                tc.changeTool(ToolList.HAND);
                 event.consume();
             }
         });
