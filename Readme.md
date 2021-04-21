@@ -4,10 +4,10 @@ Programmet skal være et tegneprogram som simulerer at du er på en bar og skal 
 
 TODO:
 
-- [ ] Fikse fxml til applikasjonen
+- [x] Fikse fxml til applikasjonen
     * [x] Lage fxml til selve tegneprogrammet 
-    * [ ] Fikse fxml til lagring og åpning av filer gjennom topbar
-        * [ ] åpne windows explorer?
+    * [x] Fikse fxml til lagring og åpning av filer gjennom topbar
+        * [x] åpne windows explorer?
 - [x] Tools greier
     * [x] zoom for alle
     * [x] hand tool
@@ -18,19 +18,18 @@ TODO:
 - [x] layers greier
     * [x] lage layer class
     * [x] fikse undo redo med layers som lagrer hvert "trekk"/malinggreie
-- [ ] Lagring
+- [x] Lagring
     * [x] designe filtype
     * [x] åpning av egen filtype
     * [x] exportering til png/jpg
     * [x] lagring til egen fil
-- [ ] generelle ting
-    * [ ] fikse Exceptions til alt som trenger det
+- [x] generelle ting
+    * [x] fikse Exceptions til alt som trenger det
 - [ ] test dekning til alle funksjoner og klasser
     * [ ] ToolController
     * [ ] Layer
     * [ ] HistoryController
     * [ ] CanvasConatiner
-    * [ ] CanvasConatinerController
     * [x] Alle tools
         * [x] Ellipse
         * [x] Eraser
