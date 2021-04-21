@@ -6,8 +6,8 @@ TODO:
 
 - [ ] Fikse fxml til applikasjonen
     * [x] Lage fxml til selve tegneprogrammet 
-    * [ ] Lage fxml til når du åpner programmet
     * [ ] Fikse fxml til lagring og åpning av filer gjennom topbar
+        * [ ] åpne windows explorer?
 - [x] Tools greier
     * [x] zoom for alle
     * [x] hand tool
@@ -19,10 +19,10 @@ TODO:
     * [x] lage layer class
     * [x] fikse undo redo med layers som lagrer hvert "trekk"/malinggreie
 - [ ] Lagring
-    * [ ] designe filtype
-    * [ ] åpning av egen filtype
-    * [ ] exportering til png/jpg
-    * [ ] lagring til egen fil
+    * [x] designe filtype
+    * [x] åpning av egen filtype
+    * [x] exportering til png/jpg
+    * [x] lagring til egen fil
 - [ ] generelle ting
     * [ ] fikse Exceptions til alt som trenger det
 - [ ] test dekning til alle funksjoner og klasser
@@ -31,11 +31,11 @@ TODO:
     * [ ] HistoryController
     * [ ] CanvasConatiner
     * [ ] CanvasConatinerController
-    * [ ] Alle tools
-        * [ ] Ellipse
-        * [ ] Eraser
-        * [ ] Hand
-        * [ ] Pencil
-        * [ ] Rectangle
-        * [ ] Tool
-        * [ ] ToolList
+    * [x] Alle tools
+        * [x] Ellipse
+        * [x] Eraser
+        * [x] Hand
+        * [x] Pencil
+        * [x] Rectangle
+        * [x] Tool
+        * [x] ToolList

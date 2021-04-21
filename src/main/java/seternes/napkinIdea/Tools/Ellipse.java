@@ -4,42 +4,17 @@ import java.util.ArrayList;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.input.ScrollEvent;
 import javafx.scene.paint.Color;
 import javafx.util.Pair;
 import seternes.napkinIdea.Layer;
 
-public class Ellipse implements Tool {
+public class Ellipse extends Tool {
 
-    private Color color;
-    private GraphicsContext gc;
     private double startX;
     private double startY;
 
     public Ellipse(Color c, GraphicsContext gc) {
-        this.color = c;
-        this.gc = gc;
-    }
-
-
-    @Override
-    public void setSize(float s) {
-        return;        
-    }
-
-    @Override
-    public void setColor(Color c) {
-        this.color = c;
-    }
-
-    @Override
-    public float getSize() {
-        return 0;
-    }
-
-    @Override
-    public Color getColor() {
-        return this.color;
+        super(2, c, gc);
     }
 
     @Override
@@ -49,7 +24,6 @@ public class Ellipse implements Tool {
         this.startX = event.getX();
         this.startY = event.getY();
         event.consume();
-        
     }
 
     @Override

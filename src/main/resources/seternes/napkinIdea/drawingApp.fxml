@@ -16,41 +16,29 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.SubScene?>
 <?import seternes.napkinIdea.CanvasContainer?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/13" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seternes.napkinIdea.TestController" fx:id="root">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/13" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seternes.napkinIdea.DrawingController" fx:id="root">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-               <MenuItem mnemonicParsing="false" text="New" />
-               <MenuItem mnemonicParsing="false" text="Save" />
-               <MenuItem mnemonicParsing="false" text="Save as" />
-              <MenuItem mnemonicParsing="false" text="Close" />
+               <MenuItem mnemonicParsing="false" text="New" fx:id="newButton" />
+               <MenuItem mnemonicParsing="false" text="Save" fx:id="saveButton" />
+               <MenuItem mnemonicParsing="false" text="Open" fx:id="openButton" />
+              <MenuItem mnemonicParsing="false" text="Close" fx:id="closeButton" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
             <items>
-               <MenuItem mnemonicParsing="false" text="Center canvas"/>
-               <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+               <MenuItem mnemonicParsing="false" text="Center canvas" fx:id="centerCanvasButton" />
             </items>
           </Menu>
         </menus>
       </MenuBar>
    </top>
-   <center>
-      <CanvasContainer fx:id="canvasContainer" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
-         <children>
-            <Canvas fx:id="canvas" height="373.0" style="-fx-cursor: none;" width="388.0" />
-         </children>
-      </CanvasContainer>
-   </center>
    <right>
       <SplitPane dividerPositions="0.3504043126684636" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" BorderPane.alignment="CENTER">
         <items>
@@ -153,4 +141,19 @@
         </items>
       </SplitPane>
    </left>
+   <center>
+      <Pane fx:id="subsceneContainer" >
+         <children>
+            <SubScene fx:id="subscene" >
+               <root>
+                  <CanvasContainer fx:id="canvasContainer" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
+                     <children>
+                        <Canvas fx:id="canvas" height="373.0" style="-fx-cursor: none;" width="388.0" />
+                     </children>
+                  </CanvasContainer>
+               </root>
+            </SubScene>
+         </children>
+      </Pane>
+   </center>
 </BorderPane>

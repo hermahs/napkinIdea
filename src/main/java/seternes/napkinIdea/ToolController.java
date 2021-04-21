@@ -3,6 +3,7 @@ package seternes.napkinIdea;
 import java.util.ArrayList;
 import javafx.event.EventHandler;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.util.Pair;
@@ -13,6 +14,8 @@ public class ToolController {
 	private ToolList tool;
 	private HistoryController hc = new HistoryController();
 	private GraphicsContext gc;
+	private Boolean isImage = false;
+	private Image img;
 
 	//history data to send to historyController
 	private ArrayList<Pair<Double, Double>> xyData = new ArrayList<Pair<Double, Double>>();
@@ -22,7 +25,7 @@ public class ToolController {
 		this.tool = ToolList.PENCIL;
 		
 		//create tools in TOOL
-		this.tools[ToolList.HAND.getValue()] = new Hand(canvasContainer);
+		this.tools[ToolList.HAND.getValue()] = new Hand(canvasContainer, gc);
 		this.tools[ToolList.PENCIL.getValue()] = new Pencil(2, Color.WHITE, gc);
 		this.tools[ToolList.BOX.getValue()] = new Rectangle(Color.WHITE, gc);
 		this.tools[ToolList.ELLIPSE.getValue()] = new Ellipse(Color.WHITE, gc);
@@ -55,40 +58,47 @@ public class ToolController {
 
 	public void undo() {
 		if(this.hc.getUndoHistory().isEmpty()) return;
-		this.gc.setFill(Color.WHITE);
-		this.gc.fillRect(0, 0, this.gc.getCanvas().getWidth(), this.gc.getCanvas().getWidth());
+		if(!this.isImage) {
+			this.gc.setFill(Color.WHITE);
+			this.gc.fillRect(0, 0, this.gc.getCanvas().getWidth(), this.gc.getCanvas().getHeight());
+		} else {
+			this.gc.drawImage(img, 0, 0, this.gc.getCanvas().getWidth(), this.gc.getCanvas().getHeight());
+		}
 		this.hc.pushRedoHistory(this.hc.popUndoHistory());
 
 		if(!this.hc.getTotalHistory().isEmpty()) {
-			for(Layer l : this.hc.getTotalHistory()) {
+			this.hc.getTotalHistory().stream().forEach((l) -> {
 				l.getTool().reDraw(l);
-			}
+			});
 		}
 
 		if(!this.hc.getUndoHistory().isEmpty()) {
-			for(Layer l : this.hc.getUndoHistory()) {
+			this.hc.getUndoHistory().stream().forEach(l -> {
 				l.getTool().reDraw(l);
-			}
+			});
 		}
-
 	}
 
 	public void redo() {
 		if(this.hc.getRedoHistory().isEmpty()) return;
-		this.gc.setFill(Color.WHITE);
-		this.gc.fillRect(0, 0, this.gc.getCanvas().getWidth(), this.gc.getCanvas().getWidth());
+		if(!this.isImage) {
+			this.gc.setFill(Color.WHITE);
+			this.gc.fillRect(0, 0, this.gc.getCanvas().getWidth(), this.gc.getCanvas().getHeight());
+		} else {
+			this.gc.drawImage(img, 0, 0, this.gc.getCanvas().getWidth(), this.gc.getCanvas().getHeight());
+		}
 		this.hc.pushUndoHistory(this.hc.popRedoHistory());
 
 		if(!this.hc.getTotalHistory().isEmpty()) {
-			for(Layer l : this.hc.getTotalHistory()) {
+			this.hc.getTotalHistory().stream().forEach((l) -> {
 				l.getTool().reDraw(l);
-			}
+			});
 		}
 
 		if(!this.hc.getUndoHistory().isEmpty()) {
-			for(Layer l : this.hc.getUndoHistory()) {
+			this.hc.getUndoHistory().stream().forEach(l -> {
 				l.getTool().reDraw(l);
-			}
+			});
 		}
 	}
 
@@ -139,4 +149,10 @@ public class ToolController {
 	public String toString() {
 		return String.format("ToolController. Tools:%s", this.tools.toString());
 	}
+
+	public void setImage(Image img) {
+		this.isImage = true;
+		this.img = img;
+	}
+
 }

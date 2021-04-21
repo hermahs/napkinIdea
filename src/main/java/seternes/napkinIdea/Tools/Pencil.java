@@ -2,45 +2,13 @@ package seternes.napkinIdea.Tools;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.input.ScrollEvent;
 import javafx.scene.paint.Color;
-import javafx.util.Pair;
 import seternes.napkinIdea.Layer;
 
-public class Pencil implements Tool {
-
-	private float size;
-	private Color color;
-	private GraphicsContext gc;
+public class Pencil extends Tool {
 	
 	public Pencil(float s, Color c, GraphicsContext gc) {
-		this.size = s;
-		this.color = c;
-		this.gc = gc;
-	}
-
-	@Override
-	public void setSize(float s) throws IllegalArgumentException {
-		if(s < 0) throw new IllegalArgumentException("size can not be negative");
-		if(s > 50) throw new IllegalArgumentException("size can not be greater than 50");
-		
-		this.size = s;
-		this.gc.setLineWidth(s);
-	}
-
-	@Override
-	public float getSize() {
-		return this.size;
-	}
-
-	@Override
-	public void setColor(Color c) {
-		this.color = c;
-	}
-
-	@Override
-	public Color getColor() {
-		return this.color;
+		super(s,c,gc);
 	}
 
 	@Override
@@ -72,10 +40,10 @@ public class Pencil implements Tool {
 		this.gc.setLineWidth(l.getSize());
 		this.gc.setStroke(l.getColor());
 		this.gc.beginPath();
-		for(Pair<Double, Double> p : l.getData()) {
+		l.getData().stream().forEach(p -> {
 			this.gc.lineTo(p.getKey(), p.getValue());
 			this.gc.stroke();
-		}
+		});
 		this.gc.closePath();
 	}
 }

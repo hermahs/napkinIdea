@@ -9,24 +9,30 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
+import javafx.scene.SubScene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.Slider;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import seternes.napkinIdea.Tools.ToolList;
 
-public class TestController implements Initializable {
+public class DrawingController implements Initializable {
     // fxml data
     @FXML private Canvas canvas;
     @FXML private ColorPicker colorPicker;
     @FXML private Slider sizeSlider;
     @FXML private Label sizeLabel;
     @FXML private CanvasContainer canvasContainer;
-    @FXML private Node root;
+    @FXML private BorderPane root;
+    @FXML private SubScene subscene;
+    @FXML private Pane subsceneContainer;
+
     // tool buttons
     @FXML private Button moveButton;
     @FXML private Button pencilButton;
@@ -36,30 +42,45 @@ public class TestController implements Initializable {
     @FXML private Button undoButton;
     @FXML private Button redoButton;
 
+    // menu buttons
+    @FXML private MenuItem newButton;
+    @FXML private MenuItem saveButton;
+    @FXML private MenuItem openButton;
+    @FXML private MenuItem closeButton;
+    @FXML private MenuItem centerCanvasButton;
+
     // other data
     private GraphicsContext gc;
     private ToolController tc;
+    private FileController fc;
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
 
         this.gc = this.canvas.getGraphicsContext2D();
-        this.tc = new ToolController(this.gc, canvasContainer);
-        this.canvasContainer.init(this.canvas, this.tc);
+        this.tc = new ToolController(this.gc, this.canvasContainer);
+        this.fc = new FileController(this.canvasContainer);
+        this.canvasContainer.init(this.canvas, this.tc, this.gc);
 
+        // setup background color for drawing area
         this.root.setStyle("-fx-background-color: grey;");
 
         // initialize canvas
-        this.gc.setFill(Color.WHITE);
-        this.gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        this.canvasContainer.clearCanvas();
 
+        // setup drawing area scaling dynamicaly
+        this.subscene.widthProperty().bind(this.subsceneContainer.widthProperty());
+        this.subscene.heightProperty().bind(this.subsceneContainer.heightProperty());
+
+        // colorpicker
         this.colorPicker.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                tc.setColor(colorPicker.getValue());
+                tc.setColor(((ColorPicker)e.getTarget()).getValue());
             }
         });
 
+        // TODO change where this happens to TC
         // size slider
         this.sizeSlider.valueProperty().addListener(new ChangeListener<Number>(){
             @Override
@@ -69,23 +90,18 @@ public class TestController implements Initializable {
             }
         });
 
+        // Buttons
         this.undoButton.setOnAction(new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
-
                 tc.undo();
-
-                event.consume();
             }
         });
 
         this.redoButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent event) {
-                
+            public void handle(ActionEvent event) {              
                 tc.redo();
-
-                event.consume();
             }
         });
 
@@ -93,7 +109,6 @@ public class TestController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 tc.changeTool(ToolList.PENCIL);
-                event.consume();
             }
         });
 
@@ -101,7 +116,6 @@ public class TestController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 tc.changeTool(ToolList.BOX);
-                event.consume();
             }
         });
 
@@ -109,7 +123,6 @@ public class TestController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 tc.changeTool(ToolList.ELLIPSE);
-                event.consume();
             }
         });
 
@@ -117,7 +130,6 @@ public class TestController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 tc.changeTool(ToolList.ERASER);
-                event.consume();
             }
         });
 
@@ -125,8 +137,25 @@ public class TestController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 tc.changeTool(ToolList.HAND);
-                event.consume();
             }
         });
+
+        this.centerCanvasButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                canvasContainer.returnCanvasToCenter();
+            }
+        });
+
+        this.openButton.setOnAction(this.fc.getOpenFileActionHandler());
+
+        this.saveButton.setOnAction(this.fc.getSaveFileActionHandler());
+
+        this.newButton.setOnAction(this.fc.getNewFileActionHandler());
+    }
+
+    // treng æ den her?
+    public void initCanvasSize(double w, double h) {
+        this.canvasContainer.setCanvasSize(w, h);
     }
 }

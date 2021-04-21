@@ -2,42 +2,13 @@ package seternes.napkinIdea.Tools;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.input.ScrollEvent;
 import javafx.scene.paint.Color;
-import javafx.util.Pair;
 import seternes.napkinIdea.Layer;
 
-public class Eraser implements Tool {
-
-    private float size;
-    private GraphicsContext gc;
+public class Eraser extends Tool {
 
     public Eraser(float s, GraphicsContext gc) {
-        this.size = s;
-        this.gc = gc;
-    }
-
-    @Override
-    public void setSize(float s) {
-        if(s < 0) throw new IllegalArgumentException("size can not be negative");
-		if(s > 50) throw new IllegalArgumentException("size can not be greater than 50");
-        this.size = s;
-        this.gc.setLineWidth(s);
-    }
-
-    @Override
-    public void setColor(Color c) {
-        return;
-    }
-
-    @Override
-    public float getSize() {
-        return this.size;
-    }
-
-    @Override
-    public Color getColor() {
-        return null;
+        super(s, Color.WHITE, gc);
     }
 
     @Override
@@ -69,11 +40,11 @@ public class Eraser implements Tool {
 		this.gc.setLineWidth(l.getSize());
 		this.gc.setStroke(Color.WHITE);
 		this.gc.beginPath();
-		for(Pair<Double, Double> p : l.getData()) {
-			this.gc.lineTo(p.getKey(), p.getValue());
+        l.getData().stream().forEach(p -> {
+            System.out.println(p.getKey() + ":" + p.getValue());
+            this.gc.lineTo(p.getKey(), p.getValue());
 			this.gc.stroke();
-		}
+        });
 		this.gc.closePath();
     }
-    
 }

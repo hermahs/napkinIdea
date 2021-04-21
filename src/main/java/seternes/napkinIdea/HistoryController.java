@@ -2,6 +2,8 @@ package seternes.napkinIdea;
 
 import java.util.ArrayList;
 
+import javafx.scene.image.Image;
+
 public class HistoryController {
     private ArrayList<Layer> totalHistory = new ArrayList<Layer>();
     private ArrayList<Layer> undoHistory = new ArrayList<Layer>();

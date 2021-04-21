@@ -1,12 +1,13 @@
 package seternes.napkinIdea.Tools;
 
 import javafx.scene.Node;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import seternes.napkinIdea.CanvasContainer;
 import seternes.napkinIdea.Layer;
 
-public class Hand implements Tool {
+public class Hand extends Tool {
 
 	private CanvasContainer canvasContainer;
 
@@ -16,21 +17,10 @@ public class Hand implements Tool {
 	private double translateAnchorX;
 	private double translateAnchorY;
 
-	public Hand(CanvasContainer canvasContainer) {
+	public Hand(CanvasContainer canvasContainer, GraphicsContext gc) {
+		super(2, Color.WHITE, gc);
 		this.canvasContainer = canvasContainer;
 	}
-
-	@Override
-	public void setSize(float s) {}
-
-	@Override
-	public void setColor(Color c) {}
-
-	@Override
-	public float getSize() {return 0;}
-
-	@Override
-	public Color getColor() {return null;}
 
 	@Override
 	public void handleOnMousePressedEvent(MouseEvent event) {

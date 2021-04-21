@@ -1,7 +1,8 @@
 module seternes.napkinIdea {
-    requires javafx.controls;
+    requires transitive javafx.controls;
     requires javafx.fxml;
 	requires transitive javafx.graphics;
+    requires javafx.swing;
 
     opens seternes.napkinIdea to javafx.fxml;
     exports seternes.napkinIdea;
