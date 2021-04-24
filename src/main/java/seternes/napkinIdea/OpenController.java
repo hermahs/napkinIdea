@@ -36,8 +36,6 @@ public class OpenController implements Initializable {
                 ChangeController.changeController(widthInput, heightInput);
             }
         });
-
-
     }
     
 }

@@ -33,6 +33,7 @@ public class CanvasContainer extends Pane {
     }
 
     public void init(Canvas c, ToolController tc, GraphicsContext gc) {
+        if(c == null || tc == null || gc == null) throw new IllegalArgumentException();
         this.canvas = c;
         this.tc = tc;
         this.gc = gc;
@@ -70,10 +71,8 @@ public class CanvasContainer extends Pane {
     }
 
     public void setCanvasSize(double w, double h) {
-        if(w > 3000) w = 3000;
-        if(h > 3000) h = 3000;
-        if(w < 200) w = 200;
-        if(h < 200) h = 200;
+
+        if(w < 200 || h < 200) throw new IllegalArgumentException();
 
         this.canvas.widthProperty().set(w);
         this.canvas.heightProperty().set(h);
@@ -81,7 +80,7 @@ public class CanvasContainer extends Pane {
         this.gc.fillRect(0, 0, this.canvas.getWidth(), this.canvas.getHeight());
     }
 
-    public void setTranslateXY(double x, double y) {
+    private void setTranslateXY(double x, double y) {
         this.setTranslateX(this.getTranslateX()-x);
         this.setTranslateY(this.getTranslateY()-y);
     }

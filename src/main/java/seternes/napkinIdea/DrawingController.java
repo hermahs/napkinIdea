@@ -19,7 +19,6 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import seternes.napkinIdea.Tools.ToolList;
 
 public class DrawingController implements Initializable {

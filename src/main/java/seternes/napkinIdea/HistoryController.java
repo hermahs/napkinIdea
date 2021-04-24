@@ -2,14 +2,11 @@ package seternes.napkinIdea;
 
 import java.util.ArrayList;
 
-import javafx.scene.image.Image;
-
 public class HistoryController {
     private ArrayList<Layer> totalHistory = new ArrayList<Layer>();
     private ArrayList<Layer> undoHistory = new ArrayList<Layer>();
     private ArrayList<Layer> redoHistory = new ArrayList<Layer>();
     private final int maxSize = 16;
-
 
     public Layer popUndoHistory() {
         if(this.undoHistory.isEmpty()) throw new ArrayIndexOutOfBoundsException();
@@ -19,6 +16,7 @@ public class HistoryController {
     }
 
     public void pushUndoHistory(Layer l) {
+        if(!(l instanceof Layer)) throw new IllegalArgumentException();
         if(this.undoHistory.size() >= this.maxSize) {
             this.totalHistory.add(this.undoHistory.get(0));
             this.undoHistory.remove(0);
@@ -28,7 +26,7 @@ public class HistoryController {
 
     public Layer getIndexUndoHistory(int i) {
         if(this.undoHistory.isEmpty()) throw new ArrayIndexOutOfBoundsException();
-        if(i < 0 || i > this.undoHistory.size()) throw new ArrayIndexOutOfBoundsException();
+        if(i < 0 || (i + 1) > this.undoHistory.size()) throw new ArrayIndexOutOfBoundsException();
         return this.undoHistory.get(i);
     }
 
@@ -40,6 +38,7 @@ public class HistoryController {
     }
 
     public void pushRedoHistory(Layer l) {
+        if(!(l instanceof Layer)) throw new IllegalArgumentException();
         if(this.redoHistory.size() >= this.maxSize) this.redoHistory.remove(0);
         this.redoHistory.add(l);
     }

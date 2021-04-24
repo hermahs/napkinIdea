@@ -3,7 +3,6 @@ package seternes.napkinIdea;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -19,7 +18,6 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader loader = loadFXML("openApp");
         scene = new Scene(loader.load(), 640, 480);
-        //scene.setFill(Color.GREY);
         stage.setScene(scene);
 
         stage.setMaximized(false);
@@ -33,6 +31,10 @@ public class App extends Application {
 
     public static void main(String[] args) {
         launch();
+    }
+
+    public static Scene getScene() {
+        return App.scene;
     }
 
     // static void setRoot(String fxml) throws IOException {

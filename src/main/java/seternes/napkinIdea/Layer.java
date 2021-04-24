@@ -12,6 +12,7 @@ public class Layer {
     private ArrayList<Pair<Double, Double>> data = new ArrayList<Pair<Double, Double>>();
 
     public Layer(Tool tool, float size, Color color, ArrayList<Pair<Double,Double>> data) {
+        if(!(tool instanceof Tool) || size < 1 || size > 50 || data.isEmpty()) throw new IllegalArgumentException();
         this.tool = tool;
         this.size = size;
         this.color = color;

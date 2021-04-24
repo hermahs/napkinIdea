@@ -21,6 +21,7 @@ public class ToolController {
 	private ArrayList<Pair<Double, Double>> xyData = new ArrayList<Pair<Double, Double>>();
 	
 	public ToolController(GraphicsContext gc, CanvasContainer canvasContainer) {
+		if(!(gc instanceof GraphicsContext) || !(canvasContainer instanceof CanvasContainer)) throw new IllegalArgumentException();
 		this.gc = gc;
 		this.tool = ToolList.PENCIL;
 		
@@ -33,6 +34,7 @@ public class ToolController {
 	}
 	
 	public void changeTool(ToolList tool) {
+		if(!(tool instanceof ToolList)) throw new IllegalArgumentException();
 		this.tool = tool;
 	}
 
@@ -43,6 +45,7 @@ public class ToolController {
 	}
 
 	public void setSize(float s) {
+		if(s < 1 || s > 50) throw new IllegalArgumentException();
 		for(Tool t : this.tools) {
 			t.setSize(s);
 		}
@@ -50,6 +53,10 @@ public class ToolController {
 
 	public ToolList getCurrentTool() {
 		return this.tool;
+	}
+
+	public Tool getTool() {
+		return this.tools[this.tool.getValue()];
 	}
 
 	public HistoryController getHistoryController() {

@@ -26,10 +26,13 @@ TODO:
 - [x] generelle ting
     * [x] fikse Exceptions til alt som trenger det
 - [ ] test dekning til alle funksjoner og klasser
-    * [ ] ToolController
-    * [ ] Layer
+    * [x] ToolController
+    * [x] Layer
     * [ ] HistoryController
-    * [ ] CanvasConatiner
+    * [x] CanvasConatiner
+    * [ ] ChangeController
+    * [ ] FileController
+    * [ ] InputChecker
     * [x] Alle tools
         * [x] Ellipse
         * [x] Eraser
