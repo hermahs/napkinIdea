@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.ArrayList;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
 
 import javafx.scene.canvas.Canvas;
@@ -19,7 +19,7 @@ public class TestToolController {
     
     private ToolController tc;
 
-    @Before
+    @BeforeEach
     public void setup() {
         Canvas canvas = new Canvas();
         GraphicsContext gc = canvas.getGraphicsContext2D();

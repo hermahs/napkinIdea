@@ -5,9 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 
 import javafx.scene.canvas.Canvas;
@@ -20,7 +19,7 @@ public class TestHistoryController {
 
     private HistoryController hc;
 
-    @Before
+    @BeforeAll
     public void setup() {
         hc = new HistoryController();
     }
