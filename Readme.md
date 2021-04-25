@@ -28,11 +28,11 @@ TODO:
 - [ ] test dekning til alle funksjoner og klasser
     * [x] ToolController
     * [x] Layer
-    * [ ] HistoryController
+    * [x] HistoryController
     * [x] CanvasConatiner
-    * [ ] ChangeController
-    * [ ] FileController
-    * [ ] InputChecker
+    * [x] ChangeController
+    * [x] FileController
+    * [x] InputChecker
     * [x] Alle tools
         * [x] Ellipse
         * [x] Eraser

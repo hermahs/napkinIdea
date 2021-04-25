@@ -153,8 +153,11 @@ public class DrawingController implements Initializable {
         this.newButton.setOnAction(this.fc.getNewFileActionHandler());
     }
 
-    // treng æ den her?
     public void initCanvasSize(double w, double h) {
         this.canvasContainer.setCanvasSize(w, h);
+    }
+
+    public FileController getFileController() {
+        return this.fc;
     }
 }

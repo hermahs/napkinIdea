@@ -23,7 +23,7 @@
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
-          <Menu mnemonicParsing="false" text="File">
+          <Menu mnemonicParsing="false" text="File" fx:id="fileButtonContainer">
             <items>
                <MenuItem mnemonicParsing="false" text="New" fx:id="newButton" />
                <MenuItem mnemonicParsing="false" text="Save" fx:id="saveButton" />

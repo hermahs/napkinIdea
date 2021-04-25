@@ -7,7 +7,6 @@ import javafx.scene.canvas.GraphicsContext;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.loadui.testfx.GuiTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -57,10 +56,10 @@ public class TestCanvasContainer {
     public void testSetCanvasScale() {
         canvasContainer.init(canvas, toolController, gc);
         canvasContainer.setCanvasSize(500, 500);
-        assertEquals(canvas.getWidth(), 500);
-        assertEquals(canvas.getHeight(), 500);
-        assertThrows(IllegalArgumentException.class, () -> {
-            canvasContainer.setCanvasSize(100, 100);
-        });
+        assertEquals(500, canvas.getWidth());
+        assertEquals(500, canvas.getHeight());
+        canvasContainer.setCanvasSize(100, 100);
+        assertEquals(200, canvas.getWidth());
+        assertEquals(200, canvas.getHeight());
     }
 }

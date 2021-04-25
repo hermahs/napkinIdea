@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.ArrayList;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
 
 import javafx.scene.canvas.Canvas;
@@ -19,7 +19,7 @@ public class TestToolController {
     
     private ToolController tc;
 
-    @Before
+    @BeforeEach
     public void setup() {
         Canvas canvas = new Canvas();
         GraphicsContext gc = canvas.getGraphicsContext2D();
@@ -30,7 +30,7 @@ public class TestToolController {
     @Test
     @DisplayName("constructor Test")
     public void testConstructor() {
-        assertThrows(IllegalAccessException.class, () -> {
+        assertThrows(IllegalArgumentException.class, () -> {
             tc = new ToolController(null, null);
         });
     }
@@ -55,7 +55,7 @@ public class TestToolController {
         data.add(new Pair<Double, Double>(10.0,10.0));
         Layer l = new Layer(tc.getTool(), 5, Color.BLUE, data);
         hc.pushUndoHistory(l);
-        assertEquals(0, hc.getUndoHistorySize());
+        assertEquals(1, hc.getUndoHistorySize());
         tc.undo();
         assertEquals(0, hc.getUndoHistorySize());
     }

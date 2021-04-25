@@ -12,7 +12,7 @@ import java.io.IOException;
  */
 public class App extends Application {
 
-    private static Scene scene;
+    private Scene scene;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -33,8 +33,8 @@ public class App extends Application {
         launch();
     }
 
-    public static Scene getScene() {
-        return App.scene;
+    public Scene getScene() {
+        return scene;
     }
 
     // static void setRoot(String fxml) throws IOException {

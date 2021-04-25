@@ -109,6 +109,10 @@ public class ToolController {
 		}
 	}
 
+	public void drawImage() {
+		this.gc.drawImage(img, 0, 0, this.gc.getCanvas().getWidth(), this.gc.getCanvas().getHeight());
+	}
+
 	public EventHandler<MouseEvent> getOnMousePressedEventHandler() {
 		return onMousePressedEventHandler;
 	}
@@ -160,6 +164,10 @@ public class ToolController {
 	public void setImage(Image img) {
 		this.isImage = true;
 		this.img = img;
+	}
+
+	public Image getImage() {
+		return this.img;
 	}
 
 }

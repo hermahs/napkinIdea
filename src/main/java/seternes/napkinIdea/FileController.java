@@ -4,6 +4,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import javax.imageio.ImageIO;
 
 import javafx.embed.swing.SwingFXUtils;
@@ -19,7 +21,7 @@ import javafx.stage.Stage;
 import javafx.stage.FileChooser.ExtensionFilter;
 
 public class FileController {
-    
+
     private CanvasContainer canvasContainer;
     private FileChooser fileChooser = new FileChooser();
 
@@ -30,23 +32,23 @@ public class FileController {
         );
     }
 
-    public EventHandler<ActionEvent> getNewFileActionHandler() {
+    public EventHandler < ActionEvent > getNewFileActionHandler() {
         return this.newFileActionHandler;
     }
 
-    public EventHandler<ActionEvent> getOpenFileActionHandler() {
+    public EventHandler < ActionEvent > getOpenFileActionHandler() {
         return this.openFileActionHandler;
     }
 
-    public EventHandler<ActionEvent> getSaveFileActionHandler() {
+    public EventHandler < ActionEvent > getSaveFileActionHandler() {
         return this.saveFileActionHandler;
     }
 
-    public EventHandler<ActionEvent> getCloseActionHandler() {
+    public EventHandler < ActionEvent > getCloseActionHandler() {
         return this.closeFileActionHandler;
     }
 
-    private EventHandler<ActionEvent> newFileActionHandler = new EventHandler<ActionEvent>() {
+    private EventHandler < ActionEvent > newFileActionHandler = new EventHandler < ActionEvent > () {
         @Override
         public void handle(ActionEvent event) {
             try {
@@ -61,53 +63,39 @@ public class FileController {
                 Stage ownStage = (Stage) canvasContainer.getScene().getWindow();
                 ownStage.close();
 
-            } catch(Exception e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
     };
 
-    private EventHandler<ActionEvent> openFileActionHandler = new EventHandler<ActionEvent>() {
+    private EventHandler < ActionEvent > openFileActionHandler = new EventHandler < ActionEvent > () {
         @Override
         public void handle(ActionEvent event) {
             fileChooser.setTitle("Open file");
-                
-            File openFile = fileChooser.showOpenDialog(canvasContainer.getScene().getWindow());
-            FileInputStream stream;
-            try {
-                stream = new FileInputStream(openFile);
-                Image openImage = new Image(stream);
 
-                if(openImage != null) {
-                    double w = openImage.getWidth();
-                    double h = openImage.getHeight();
-    
-                    canvasContainer.setCanvasSize(w, h);
-                    canvasContainer.getGC().drawImage(openImage, 0, 0, w, h);
-    
-                    canvasContainer.getToolController().setImage(openImage);
-                }
+            File f = fileChooser.showOpenDialog(canvasContainer.getScene().getWindow());
+            try {
+                openFile(f);
                 event.consume();
-                
+
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
         }
     };
 
-    private EventHandler<ActionEvent> saveFileActionHandler = new EventHandler<ActionEvent>() {
+    private EventHandler < ActionEvent > saveFileActionHandler = new EventHandler < ActionEvent > () {
         @Override
         public void handle(ActionEvent event) {
             fileChooser.setTitle("Save file");
 
             File file = fileChooser.showSaveDialog(canvasContainer.getScene().getWindow());
 
-            if(file != null) {
+            if (file != null) {
                 try {
-                    WritableImage image = canvasContainer.getCanvas().snapshot(new SnapshotParameters(), null);
-                    BufferedImage renderedImage = SwingFXUtils.fromFXImage(image, null);
-                    ImageIO.write(renderedImage, "png", file);
-                } catch(Exception e) {
+                    saveFile(file);
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
@@ -115,10 +103,39 @@ public class FileController {
         }
     };
 
-    private EventHandler<ActionEvent> closeFileActionHandler = new EventHandler<ActionEvent>() {
+    private EventHandler < ActionEvent > closeFileActionHandler = new EventHandler < ActionEvent > () {
         @Override
         public void handle(ActionEvent event) {
             System.exit(0);
         }
     };
+
+    public void openFile(File f) throws FileNotFoundException {
+        FileInputStream stream;
+        try {
+            stream = new FileInputStream(f);
+        } catch (Exception e) {
+            throw new FileNotFoundException();
+        }
+
+        Image openImage = new Image(stream);
+
+        if (openImage != null) {
+            double w = openImage.getWidth();
+            double h = openImage.getHeight();
+
+            canvasContainer.setCanvasSize(w, h);
+            canvasContainer.getGC().drawImage(openImage, 0, 0, w, h);
+
+            canvasContainer.getToolController().setImage(openImage);
+            canvasContainer.getToolController().drawImage();
+        }
+    }
+
+    public void saveFile(File f) throws IOException {
+        if(!f.exists()) throw new FileNotFoundException();
+        WritableImage image = canvasContainer.getCanvas().snapshot(new SnapshotParameters(), null);
+        BufferedImage renderedImage = SwingFXUtils.fromFXImage(image, null);
+        ImageIO.write(renderedImage, "png", f);
+    }
 }

@@ -9,6 +9,7 @@ public class InputChecker {
     private TextField input;
 
     public InputChecker(TextField i) {
+        if(!(i instanceof TextField)) throw new IllegalArgumentException();
         this.input = i;
     }
 
@@ -23,6 +24,10 @@ public class InputChecker {
 
     public ChangeListener<String> getCheckForNumbersChangeListener() {
         return this.checkForNumbersChangeListener;
+    }
+
+    public TextField getInput() {
+        return this.input;
     }
 
 }

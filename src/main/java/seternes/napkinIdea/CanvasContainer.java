@@ -72,7 +72,8 @@ public class CanvasContainer extends Pane {
 
     public void setCanvasSize(double w, double h) {
 
-        if(w < 200 || h < 200) throw new IllegalArgumentException();
+        if(w < 200) w = 200;
+        if(h < 200) h = 200;
 
         this.canvas.widthProperty().set(w);
         this.canvas.heightProperty().set(h);

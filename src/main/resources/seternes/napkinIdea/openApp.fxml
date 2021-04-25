@@ -15,18 +15,18 @@
             <Group layoutX="215.0" layoutY="149.0">
                <children>
                   <Label fx:id="widthError" layoutY="25.0" textAlignment="CENTER" textFill="RED" />
-                  <Label layoutY="-17.0" text="Width (in pixels, max 3000px)" />
+                  <Label layoutY="-17.0" text="Width (in pixels)" />
                   <TextField fx:id="widthInput" />
                </children>
             </Group>
-            <Button fx:id="createButton" layoutX="269.0" layoutY="293.0" mnemonicParsing="false" text="Create" />
             <Group layoutX="215.0" layoutY="225.0">
                <children>
-                  <Label layoutY="-17.0" text="Height (in pixels, max 3000px)" />
+                  <Label layoutY="-17.0" text="Height (in pixels)" />
                   <TextField fx:id="heightInput" />
                   <Label fx:id="heightError" layoutY="26.0" textFill="RED" />
                </children>
             </Group>
+            <Button fx:id="createButton" layoutX="269.0" layoutY="293.0" mnemonicParsing="false" text="Create" />
             <Label layoutX="183.0" layoutY="78.0" text="Create new painting">
                <font>
                   <Font size="23.0" />
