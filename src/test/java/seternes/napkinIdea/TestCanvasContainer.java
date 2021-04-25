@@ -1,6 +1,5 @@
 package seternes.napkinIdea;
 
-import javafx.scene.Parent;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 
