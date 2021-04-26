@@ -1,6 +1,6 @@
 # Napkin idea
 
-Dette er et prosjektarbeid i faget TDT4100, objekt orientert programmering.
+Dette er et prosjektarbeid i faget TDT4100, objekt orientert programmering. Koden ble utviklet i Visual Studio Code - Insider med Java ekstensjoner.
 
 ## hvordan starte programmet
 
