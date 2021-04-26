@@ -3,8 +3,6 @@ package seternes.napkinIdea;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -21,6 +19,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import seternes.napkinIdea.Tools.ToolList;
 
+// Controller til drawingApp
 public class DrawingController implements Initializable {
     // fxml data
     @FXML private Canvas canvas;

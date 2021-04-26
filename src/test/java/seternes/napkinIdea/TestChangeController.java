@@ -61,13 +61,13 @@ public class TestChangeController extends ApplicationTest {
     @Test
     @DisplayName("test change main window, input with text")
     public void testChangeControllerText() {
-        clickOn("#widthInput").write("2s0f0");
-        clickOn("#heightInput").write("2d00ds");
+        clickOn("#widthInput").write("3s0f0");
+        clickOn("#heightInput").write("3d00ds");
         clickOn("#createButton");
         //Thread.sleep(3000);
         CanvasContainer cc = (CanvasContainer) lookup("#subscene").queryAllAs(SubScene.class).stream().findFirst().get().getRoot();
-        assertEquals(200, cc.getCanvas().getWidth());
-        assertEquals(200, cc.getCanvas().getHeight());
+        assertEquals(300, cc.getCanvas().getWidth());
+        assertEquals(300, cc.getCanvas().getHeight());
     }
 
 }

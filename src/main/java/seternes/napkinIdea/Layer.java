@@ -5,6 +5,7 @@ import javafx.scene.paint.Color;
 import javafx.util.Pair;
 import seternes.napkinIdea.Tools.Tool;
 
+// layer klassen inneholder alt om layer, som er inneholder slags tegneoppgave som har blitt gjort og dataen om den. Blir brukt for Undo/Redo history
 public class Layer {
     private Tool tool;
     private float size;

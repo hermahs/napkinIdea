@@ -51,7 +51,7 @@ public class TestCanvasContainer {
     }
 
     @Test
-    @DisplayName("test canvas center")
+    @DisplayName("test set sclae")
     public void testSetCanvasScale() {
         canvasContainer.init(canvas, toolController, gc);
         canvasContainer.setCanvasSize(500, 500);

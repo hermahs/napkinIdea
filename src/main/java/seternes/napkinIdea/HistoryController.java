@@ -2,6 +2,7 @@ package seternes.napkinIdea;
 
 import java.util.ArrayList;
 
+// historyController klassen behandler alt av Undo/Redo og tegningen av alle tegneoppgavene som har blitt gjort.
 public class HistoryController {
     private ArrayList<Layer> totalHistory = new ArrayList<Layer>();
     private ArrayList<Layer> undoHistory = new ArrayList<Layer>();

@@ -2,11 +2,9 @@ package seternes.napkinIdea;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
-import org.testfx.robot.Motion;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -54,7 +52,7 @@ public class TestHistoryControllerFX extends ApplicationTest {
         assertEquals(0, hc.getRedoHistorySize());
         sleep(100);
         clickOn("#undoButton");
-        sleep(1000);
+        sleep(100);
         assertEquals(0, hc.getUndoHistorySize());
         assertEquals(1, hc.getRedoHistorySize());
     }

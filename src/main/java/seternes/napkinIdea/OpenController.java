@@ -8,16 +8,14 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+// dette er Controlleren til openApp
 public class OpenController implements Initializable {
 
     @FXML private TextField widthInput;
     @FXML private TextField heightInput;
     @FXML private Button createButton;
-    @FXML private Label widthError;
-    @FXML private Label heightError;
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {

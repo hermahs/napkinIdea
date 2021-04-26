@@ -20,6 +20,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser.ExtensionFilter;
 
+// FileController klassen behandler alt om åpning og lagring av filer gjennom FileChooser
 public class FileController {
 
     private CanvasContainer canvasContainer;

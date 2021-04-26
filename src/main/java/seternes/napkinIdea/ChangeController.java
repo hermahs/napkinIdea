@@ -7,6 +7,7 @@ import javafx.stage.Stage;
 
 public class ChangeController {
     
+    // bytte mellom åpningsvindu og tegnevindu
     public static void changeController(TextField width, TextField height) {
         double w = 200;
         double h = 200;

@@ -12,6 +12,7 @@ import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
+// CanvasContainer som er et eget element som er i FXML'en til drawingApp og inneholder all logikk for canvas og calling til Toolcontroller for tegning
 public class CanvasContainer extends Pane {
 
     private Canvas canvas;
@@ -110,7 +111,7 @@ public class CanvasContainer extends Pane {
     };
 
     private void handleScrollY(ScrollEvent event) {
-        this.offsetY += event.getDeltaY();
+        this.offsetY += event.getDeltaY();  
         this.canvas.setTranslateY(this.canvas.getTranslateY()-event.getDeltaY());
         event.consume();
     }

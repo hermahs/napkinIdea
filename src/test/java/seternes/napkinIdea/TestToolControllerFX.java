@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 import seternes.napkinIdea.Tools.ToolList;
 
 public class TestToolControllerFX extends ApplicationTest {
- 
+
     @Override
     public void start(Stage stage) throws Exception {
         stage.setScene(new Scene(App.loadFXML("drawingApp").load()));
@@ -55,5 +55,4 @@ public class TestToolControllerFX extends ApplicationTest {
         press(KeyCode.ENTER);
         assertEquals(Color.web("999999"), lookup("#colorPicker").queryAs(ColorPicker.class).getValue());
     }
-
 }

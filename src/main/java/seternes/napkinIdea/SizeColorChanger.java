@@ -7,6 +7,7 @@ import javafx.event.EventHandler;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 
+// denne klassen bytting av farge fra fargevelgeren og størrelse slideren
 public class SizeColorChanger {
     
     private ToolController tc;

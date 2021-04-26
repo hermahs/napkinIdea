@@ -9,6 +9,7 @@ import javafx.scene.paint.Color;
 import javafx.util.Pair;
 import seternes.napkinIdea.Tools.*;
 
+// denne classen håndterer alt som har med Tools å gjøre.
 public class ToolController {
 	private Tool[] tools = new Tool[ToolList.values().length];
 	private ToolList tool;

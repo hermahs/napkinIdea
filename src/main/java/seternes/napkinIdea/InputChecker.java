@@ -4,6 +4,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.TextField;
 
+// passer på at inputet i et tekstfelt bare er tall og andre ting
 public class InputChecker {
     
     private TextField input;
