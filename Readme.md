@@ -1,43 +1,22 @@
-Prosjekt arbeid til TDT4100.
+# Napkin idea
 
-Programmet skal være et tegneprogram som simulerer at du er på en bar og skal tegne din nyeste og beste ide på en serviet for å vise til vennen din.
+Dette er et prosjektarbeid i faget TDT4100, objekt orientert programmering.
 
-TODO:
+## hvordan starte programmet
 
-- [x] Fikse fxml til applikasjonen
-    * [x] Lage fxml til selve tegneprogrammet 
-    * [x] Fikse fxml til lagring og åpning av filer gjennom topbar
-        * [x] åpne windows explorer?
-- [x] Tools greier
-    * [x] zoom for alle
-    * [x] hand tool
-    * [x] Pencil tool
-    * [x] Rectangle tool
-    * [x] Ellipse tool
-    * [x] Eraser tool
-- [x] layers greier
-    * [x] lage layer class
-    * [x] fikse undo redo med layers som lagrer hvert "trekk"/malinggreie
-- [x] Lagring
-    * [x] designe filtype
-    * [x] åpning av egen filtype
-    * [x] exportering til png/jpg
-    * [x] lagring til egen fil
-- [x] generelle ting
-    * [x] fikse Exceptions til alt som trenger det
-- [ ] test dekning til alle funksjoner og klasser
-    * [x] ToolController
-    * [x] Layer
-    * [x] HistoryController
-    * [x] CanvasConatiner
-    * [x] ChangeController
-    * [x] FileController
-    * [x] InputChecker
-    * [x] Alle tools
-        * [x] Ellipse
-        * [x] Eraser
-        * [x] Hand
-        * [x] Pencil
-        * [x] Rectangle
-        * [x] Tool
-        * [x] ToolList
+For å kjøre programmet trenger du bare å skrive inn dette i konsollen. Maven er nødvendig for å kjøre programmet.
+
+```
+mvn install
+mvn compile
+mvn javafx:run
+```
+
+## hvordan å teste programmet
+
+For å kjøre testene trenger du bare å skrive inn dette i konsollen.
+Maven er nødvendig for å kjøre testene.
+
+```
+mvn test
+```
