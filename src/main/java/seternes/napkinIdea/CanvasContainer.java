@@ -131,7 +131,7 @@ public class CanvasContainer extends Pane {
         if(event.getDeltaY() > 0) scale *= delta;
         if(event.getDeltaY() < 0) scale /= delta;
 
-        scale = clamp(scale, this.MIN_SCALE, this.MAX_SCALE);
+        scale = clamp(scale, MIN_SCALE, MAX_SCALE);
 
         double f = (scale / oldScale)-1;
 
