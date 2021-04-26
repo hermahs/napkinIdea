@@ -160,4 +160,8 @@ public class DrawingController implements Initializable {
     public FileController getFileController() {
         return this.fc;
     }
+
+    public ToolController getToolController() {
+        return this.tc;
+    }
 }

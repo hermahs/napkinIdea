@@ -31,7 +31,7 @@
               <MenuItem mnemonicParsing="false" text="Close" fx:id="closeButton" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
+          <Menu mnemonicParsing="false" text="Edit" fx:id="editButtonContainer">
             <items>
                <MenuItem mnemonicParsing="false" text="Center canvas" fx:id="centerCanvasButton" />
             </items>

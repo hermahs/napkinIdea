@@ -35,16 +35,6 @@ public class TestFileController extends ApplicationTest {
         stage.show();
     }
 
-    // @BeforeEach
-    // public void setup() {
-    //     Canvas canvas = new Canvas();
-    //     GraphicsContext gc = canvas.getGraphicsContext2D();
-    //     canvasContainer = new CanvasContainer();
-    //     ToolController tc = new ToolController(gc, canvasContainer);
-    //     canvasContainer.init(canvas, tc, gc);
-    //     fc = new FileController(canvasContainer);
-    // }
-
     @Test
     @DisplayName("Test open file")
     public void testOpenFile() throws FileNotFoundException, InterruptedException {
