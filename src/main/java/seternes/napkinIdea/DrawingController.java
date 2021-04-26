@@ -52,6 +52,7 @@ public class DrawingController implements Initializable {
     private GraphicsContext gc;
     private ToolController tc;
     private FileController fc;
+    private SizeColorChanger scc;
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
@@ -60,6 +61,8 @@ public class DrawingController implements Initializable {
         this.tc = new ToolController(this.gc, this.canvasContainer);
         this.fc = new FileController(this.canvasContainer);
         this.canvasContainer.init(this.canvas, this.tc, this.gc);
+        this.scc = new SizeColorChanger(tc, sizeLabel);
+        
 
         // setup background color for drawing area
         this.root.setStyle("-fx-background-color: grey;");
@@ -72,22 +75,10 @@ public class DrawingController implements Initializable {
         this.subscene.heightProperty().bind(this.subsceneContainer.heightProperty());
 
         // colorpicker
-        this.colorPicker.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                tc.setColor(((ColorPicker)e.getTarget()).getValue());
-            }
-        });
+        this.colorPicker.setOnAction(this.scc.getHandleChangeColor());
 
-        // TODO change where this happens to TC
         // size slider
-        this.sizeSlider.valueProperty().addListener(new ChangeListener<Number>(){
-            @Override
-            public void changed(ObservableValue<? extends Number> observedvalue, Number oldValue, Number newValue) {
-                tc.setSize(newValue.floatValue());
-                sizeLabel.textProperty().setValue(String.valueOf(newValue.intValue()));
-            }
-        });
+        this.sizeSlider.valueProperty().addListener(this.scc.getSizeChanger());
 
         // Buttons
         this.undoButton.setOnAction(new EventHandler<ActionEvent>(){
